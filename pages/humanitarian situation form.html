@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanitarian Situation</title>
+    <link rel="stylesheet" href="../assests/css files/human response.css">
+
+    <style>
+        .submit-button {
+    text-align: center; /* Center the button within its container */
+    margin-top: 20px; /* Add some space above the button */
+}
+
+.btn {
+    padding: 10px 20px; /* Padding for the button */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    color: #fff; /* Text color */
+    background-color:green; /* Bootstrap primary color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effect */
+}
+
+.btn:hover {
+    background-color:green; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.btn:focus {
+    outline: none; /* Remove outline on focus */
+}
+    </style>
+</head>
+<body>
+    <div class="main-content app-content mt-0">
+        <div class="side-app">
+            <div class="main-container container-fluid">
+                <div class="mt-5">
+                                                        </div>
+                <div class="page-header">
+                    <h1 class="page-title">Humanitarian Situation</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="post" action="" enctype="multipart/form-data">
+                                    <input type="hidden" name="_token" value="cM7TrYldeKc79fczUbEPEyO1uAMXyngP4eNOv3gO">                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label class="form-label">Name</label>
+                                            <input type="text" name="name" class="form-control" placeholder="Please Enter Name" required>
+                                        </div>
+                                            <div class="form-group">
+                                                <label for="icon">Icon</label>
+                                                <div class="file-upload" id="icon">
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                    <p>Drag and drop a file here or click</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                  
+                                         <div class="form-group col-md-12">
+                                            <label class="form-label">Overview of situation</label>
+                                            <textarea id="editor" name="overview" rows="8" class="form-control" ></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="form-label">Damages details</label>
+                                            <textarea id="summernote" name="damage_details" rows="8" class=" form-control" ></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="form-label">Snapshot of Affected Areas</label>
+                                            <textarea name="snapshot" rows="8" class="form-control" ></textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label class="form-label">Sectoral Needs and Gaps</label>
+                                            <textarea name="needs" rows="8" class="form-control" ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="submit-button">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

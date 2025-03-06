@@ -1,0 +1,241 @@
+<html>
+<head>
+    <title>About</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <!-- Your custom CSS (if any) -->
+    <link rel="stylesheet" href="../assests/css files/style2.css" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            flex: 1;
+            margin-right: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-group input {
+            flex: 2;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        a {
+            color: #6f42c1;
+            text-decoration: none;
+        }
+        .submit-button {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+        .submit-button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            background-color: green;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #sidebar {
+            width: 250px;
+            background: #343a40;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            transition: all 0.3s ease;
+          }
+          #sidebar .sidebar-logo a {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+          }
+          #sidebar .sidebar-logo a:hover {
+            color: #ffc107;
+          }
+          #sidebar {
+            width: 250px;
+            background-color: #0c5227;
+            color: #fff;
+            min-height: 100vh;
+          }
+          #sidebar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            border-radius: 5px;
+          }
+          #sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+          }
+          /* Main content styling */
+          .main-content {
+            flex-grow: 1;
+            padding: 20px;
+          }
+          .table thead th {
+            background-color: #0c5227;
+            color: #fff;
+          }
+          .pagination {
+            justify-content: center;
+          }
+          /* Hide sidebar on small screens */
+          @media (max-width: 768px) {
+            #sidebar {
+              display: none;
+            }
+          }
+    </style>
+</head>
+<body>
+    <aside id="sidebar">
+        <div class=" py-3">
+          <h2>PHF</h2>
+          <ul class="list-unstyled">
+            <li><a href="member info.html"><i class='bx bx-home-alt'></i> Main</a></li>
+            <li><a href="all project.html"><i class='bx bx-folder'></i> All Projects</a></li>
+            <li><a href="report.html"><i class='bx bxs-report'></i> Report Extract</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class='bx bx-log-out'></i> Logout</a></li>
+          </ul>
+        </div>
+      </aside>
+    <div class="container">
+        <h1>About</h1>
+        <form>
+            <div class="form-group">
+                <label>Overall Projects</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label>Development Projects</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label>Humanitarian Projects</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label>Total Beneficiaries</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label>Total Budget</label>
+                <input type="text">
+            </div>
+            <div class="submit-button">
+                <button type="submit">
+                 Submit
+                </button>
+               </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+th {
+    font-weight: bold;
+}
+a {
+    color: green;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+.submit-btn {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+.submit-btn button {
+    background-color: #6f42c1;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.submit-btn button:hover {
+    background-color: #5a3791;
+}
+@media (max-width: 600px) {
+    th, td {
+        display: block;
+        width: 100%;
+    }
+    th {
+        text-align: left;
+    }
+}
+
+</style>

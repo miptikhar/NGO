@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <!-- meta tag -->
+    <meta charset="utf-8">
+    <title>Pakistan Humanitarian Forum | PHF</title>
+    <meta name="description" content="">
+    <!-- responsive tag -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap v4.4.1 css -->
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/css/bootstrap.min.css">
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/css/font-awesome.min.css">
+    <!-- flaticon css -->
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/fonts/flaticon.css">
+    <!-- animate css -->
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/css/animate.css">
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/css/owl.carousel.css">
+    <!-- off canvas css -->
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/css/off-canvas.css">
+    <!-- Main Menu css -->
+    <link rel="stylesheet" href="https://pakhumanitarianforum.org/dashboard/public/front/css/rsmenu-main.css">
+    <!-- nivo slider CSS -->
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/inc/custom-slider/css/nivo-slider.css">
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/inc/custom-slider/css/preview.css">
+    <!-- spacing css -->
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/css/rs-spacing.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/style.css"> <!-- This stylesheet dynamically changed from style.less -->
+    <!-- responsive css -->
+    <link rel="stylesheet" type="text/css" href="https://pakhumanitarianforum.org/dashboard/public/front/css/responsive.css">
+    <!--boxicon-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://pakhumanitarianforum.org/dashboard/public/front/css/style.css" rel="stylesheet">
+    <style>
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+
+    <style>
+        #chartdiv1 {
+            width: 100%;
+            height: 500px;
+            margin: auto;
+        }
+    </style>
+
+    <style>
+        .header-brand-img {
+            height: 4.1rem;
+        }
+        .app-sidebar__user {
+            padding: 27px 0 15px;
+        }
+
+
+
+        @import  url("https://fonts.googleapis.com/css?family=Poppins:300,400,600,800&display=swap");
+
+
+        body {
+            font-family: "Poppins", sans-serif;
+            font-size: 12px;
+        }
+
+        .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100vh;
+        }
+
+
+        .container {
+            /*display: flex;*/
+
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            /*position: absolute;*/
+            padding-top: 200px;
+            width: 30%;
+        }
+
+        .form {
+            background-color: transparent;
+            border: 2px solid rgba(238, 238, 238, 0.7);
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0px 1px 5px 1px rgba(51, 51, 51, 0.1);
+        }
+
+        .uicon {
+            font-size: 35px;
+            color: green;
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .heading-2 {
+            text-transform: uppercase;
+            color: green;
+            font-size: 19px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+
+        }
+
+        .input-item {
+            margin-bottom: 20px;
+        }
+
+        .input {
+            height: 35px;
+            width: 100%;
+            padding: 10px 10px 10px 60px;
+            border: none;
+            border-radius: 7px;
+            box-shadow: 0px 2px 5px 2px rgba(51, 51, 51, 0.1);
+        }
+        .input:focus {
+            outline: none;
+        }
+
+        .label {
+            position: absolute;
+            height: 35px;
+            color: #fff;
+            display: block;
+            width: 40px;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 7px 0 0 7px;
+        }
+
+        .form-login .label {
+            background-color: green;
+        }
+
+        .form-register .label {
+            background-color: #00EEB3;
+        }
+
+        .btn {
+            color: #fff;
+            text-transform: uppercase;
+            display: block;
+            width: 100%;
+            height: 35px;
+            border: none;
+            border-radius: 7px;
+            letter-spacing: 2px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: -5px;
+            margin-bottom: 20px;
+            transition: all 0.2s;
+            box-shadow: 0px 2px 10px 2px rgba(51, 51, 51, 0.2);
+        }
+        .btn:hover {
+            filter: brightness(1.1);
+        }
+        .btn:focus {
+            outline: none;
+        }
+
+        .checkbox {
+            display: none;
+        }
+
+        .checkbox:checked + .checkbox-label:before {
+            display: inline-block;
+            font-family: "Font Awesome 5 Free";
+            content: "\f00c";
+        }
+
+        .checkbox-label {
+            font-size: 14px;
+            font-weight: 700;
+            float: right;
+            color: green;
+            margin-bottom: 30px;
+            text-decoration: underline;
+        }
+        .checkbox-label:before {
+            /*display: inline-block;*/
+            /*content: "";*/
+            /*height: 20px;*/
+            /*width: 20px;*/
+            /*background: #fff;*/
+            /*margin-right: 10px;*/
+            /*box-shadow: 0px 2px 5px 2px rgba(51, 51, 51, 0.1);*/
+            /*line-height: 20px;*/
+            /*font-size: 14px;*/
+            /*font-weight: 900;*/
+            /*text-align: center;*/
+            /*color: #333;*/
+        }
+
+        .heading-3 {
+            position: absolute;
+            bottom: -40px;
+            left: 10%;
+            color: #eee;
+            font-weight: 100;
+            font-size: 12px;
+            width: 100%;
+        }
+
+        .link:link, .link:visited {
+            display: inline-block;
+            margin-left: 10px;
+            text-decoration: none;
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 3px;
+            color: #343F34;
+            box-shadow: 0px 2px 5px 2px rgba(51, 51, 51, 0.1);
+        }
+
+        .form-login .btn {
+            background-color: green;
+        }
+
+        .form-register .btn {
+            background-color: rgba(0, 238, 179, 0.8);
+        }
+
+        .form-register {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .hide {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .form-login, .form-register, .bg-orange, .bg-blue {
+            transition: all 0.5s;
+        }
+
+        .main-page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .heading-main {
+            font-size: 68px;
+            font-weight: lighter;
+            margin-bottom: 40px;
+        }
+        .heading-main .username {
+            font-weight: bold;
+            color: #FDDE90;
+        }
+
+        .text {
+            font-size: 18px;
+            text-align: center;
+            width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 35px;
+        }
+        .text .email {
+            font-weight: 400;
+            color: #FDDE90;
+        }
+
+        .btn-started {
+            display: inline-block;
+            text-decoration: none;
+            border: 2px solid #FDDE90;
+            padding: 10px 15px;
+            color: #FDDE90;
+            font-size: 14px;
+            border-radius: 2px;
+            transition: all 0.1s;
+        }
+        .btn-started:hover {
+            transform: scale(1.1);
+        }
+        .btn-started:active {
+            transform: scale(1.05);
+        }
+
+
+
+
+
+
+
+
+
+        .slideshow {
+            list-style: none;
+            z-index: 1;
+        }
+        .slideshow li span {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            color: transparent;
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: none;
+            opacity: 0;
+            z-index: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-animation: imageAnimation 24s linear infinite 0s;
+            -moz-animation: imageAnimation 24s linear infinite 0s;
+            animation: imageAnimation 24s linear infinite 0s;
+        }
+        .slideshow li h3 {
+            position: absolute;
+            text-align: center;
+            z-index: 2;
+            bottom: 150px;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            font-size: 4.0625em;
+            font-family: "Josefin Sans", sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+            -webkit-animation: titleAnimation 24s linear 1 0s;
+            -moz-animation: titleAnimation 24s linear 1 0s;
+            animation: titleAnimation 24s linear 1 0s;
+        }
+        @media  only screen and (min-width: 768px) {
+            .slideshow li h3 {
+                bottom: 30px;
+                font-size: 8.125em;
+            }
+        }
+        @media  only screen and (min-width: 1024px) {
+            .slideshow li h3 {
+                font-size: 10.9375em;
+            }
+        }
+
+        .slideshow li:nth-child(1) span {
+            background-image: url(image.JPG);
+        }
+
+        .slideshow li:nth-child(2) span {
+            background-image: url(https://pakhumanitarianforum.org/wp-content/uploads/2024/09/helvetas.jpg);
+            -webkit-animation-delay: 6s;
+            -moz-animation-delay: 6s;
+            animation-delay: 6s;
+        }
+
+        .slideshow li:nth-child(3) span {
+            background-image: url(https://pakhumanitarianforum.org/wp-content/uploads/2024/09/IRP.jpg);
+            -webkit-animation-delay: 12s;
+            -moz-animation-delay: 12s;
+            animation-delay: 12s;
+        }
+
+        .slideshow li:nth-child(4) span {
+            background-image: url(https://media.licdn.com/dms/image/v2/D4D22AQH1NeY6dy2uEg/feedshare-shrink_800/feedshare-shrink_800/0/1731923367144?e=2147483647&v=beta&t=NxIxJkEiSr2Whihqlng8510RMk6_Aigba6sjU35ZD6s);
+            -webkit-animation-delay: 18s;
+            -moz-animation-delay: 18s;
+            animation-delay: 18s;
+        }
+
+        @-webkit-keyframes imageAnimation {
+            0% {
+                opacity: 0;
+                -webkit-animation-timing-function: ease-in;
+            }
+            12.5% {
+                opacity: 1;
+                -webkit-animation-timing-function: ease-out;
+            }
+            25% {
+                opacity: 1;
+            }
+            37.5% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @-moz-keyframes imageAnimation {
+            0% {
+                opacity: 0;
+                -moz-animation-timing-function: ease-in;
+            }
+            12.5% {
+                opacity: 1;
+                -moz-animation-timing-function: ease-out;
+            }
+            25% {
+                opacity: 1;
+            }
+            37.5% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes  imageAnimation {
+            0% {
+                opacity: 0;
+                -webkit-animation-timing-function: ease-in;
+                -moz-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+            }
+            12.5% {
+                opacity: 1;
+                -webkit-animation-timing-function: ease-out;
+                -moz-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+            }
+            25% {
+                opacity: 1;
+            }
+            37.5% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @-webkit-keyframes titleAnimation {
+            0% {
+                opacity: 0;
+            }
+            12.5% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 1;
+            }
+            37.5% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @-moz-keyframes titleAnimation {
+            0% {
+                opacity: 0;
+            }
+            12.5% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 1;
+            }
+            37.5% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes  titleAnimation {
+            0% {
+                opacity: 0;
+            }
+            12.5% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 1;
+            }
+            37.5% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .no-cssanimations .slideshow li span {
+            opacity: 1;
+        }
+
+
+
+        #particles-js
+        {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /*background: white;*/
+        }
+
+    </style>
+
+    <style>
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 80%; /* Increase width for smaller screens */
+                padding-top: 100px; /* Adjust padding for smaller screens */
+            }
+
+            .form {
+                padding: 15px; /* Reduce padding for smaller screens */
+            }
+
+            .heading-2 {
+                font-size: 16px; /* Adjust font size for smaller screens */
+            }
+
+            .input {
+                height: 40px; /* Increase input height for better touch targets */
+            }
+
+            .btn {
+                height: 40px; /* Increase button height for better touch targets */
+                font-size: 14px; /* Adjust button font size */
+            }
+
+            .text {
+                width: 90%; /* Adjust text width for smaller screens */
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .heading-main {
+                font-size: 36px; /* Further reduce heading size for very small screens */
+            }
+
+            .text {
+                font-size: 16px; /* Adjust text size for very small screens */
+            }
+        }
+    </style>
+
+</head>
+<div id="particles-js"></div>
+<body class="app sidebar-mini">
+<!-- GLOBAL-LOADER -->
+
+
+
+<div class="container form-login">
+    <div class="form ">
+        <h2 class="heading-2">login</h2>
+        <form id="loginForm">
+            <input type="hidden" name="_token" value="bjwALIwIH0Fsjm0dezRMGELeXgkASTO1QJWiUTFB">            
+            <div class="input-item">
+                <label for="username" class="label"><i class='bx bx-user'></i></label>
+                <input type="text" name="email" id="email" class="input " placeholder="Please Enter Email" required>
+            </div>
+            <div class="input-item">
+                <label for="password" class="label"><i class='bx bxs-lock-alt'></i></label>
+                <input type="password" name="password" id="password" class="input " placeholder="Please Enter Password" required>
+            </div>
+
+            <button type="submit" class="btn submit-login">Login</button>
+            <div class="footer">
+                <p> Forget your password <a href="forget.html">Reset it here</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="bg">
+
+    <ul class='slideshow'>
+        <li>
+            <h3></h3>
+            <span>P</span>
+        </li>
+        <li>
+            <span>H</span>
+        </li>
+        <li>
+            <span>F</span>
+        </li>
+        <li>
+            <span></span>
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    // ParticlesJS Config.
+    particlesJS("particles-js", {
+        "particles": {
+            "number": {
+                "value": 120,
+                "density": {
+                    "enable": true,
+                    "value_area": 700
+                }
+            },
+            "color": {
+                "value": "#ffffff"
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+            },
+            "opacity": {
+                "value": 0.5,
+                "random": false,
+                "anim": {
+                    "enable": false,
+                    "speed": 0.1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 10,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 2,
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "grab"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 140,
+                    "line_linked": {
+                        "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 200,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": true
+    });
+</script>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); 
+
+        const username = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+            console.log(data , "this is the login response");
+
+            if (response.ok) {
+                // Save user data and token to local storage
+                localStorage.setItem('user', JSON.stringify(data.user));
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('role', data.user.role);
+
+                // Redirect based on user role
+                if (data.user.role === 'admin') {
+                    window.location.href = 'dashboard.html'; 
+                } else {
+                    window.location.href = 'user.html';
+                }
+            } else {
+                // Handle errors (e.g., show an error message)
+                console.error('Login failed:', data);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+</script>
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordInput = document.getElementById('password');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.classList.toggle('bx-show'); // Toggle the eye icon
+        this.classList.toggle('bx-hide'); // Change icon based on visibility
+    });
+</script>
+
+</body>
+
+</html>

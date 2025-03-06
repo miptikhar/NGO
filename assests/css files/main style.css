@@ -1,0 +1,117 @@
+/* main style.css */
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa; /* Light background color */
+    margin: 0;
+    padding: 50%;
+}
+
+/* Main Container */
+.main.content {
+    padding: 20px;
+}
+
+/* Page Header */
+.Page.header {
+    margin-bottom: 30px;
+}
+
+.Page.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #343a40; /* Dark color for the title */
+}
+
+/* Card Styles */
+.card {
+    border: 1px solid #dee2e6; /* Light border */
+    border-radius: 0.5rem; /* Rounded corners */
+    background-color: #ffffff; /* White background for cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 20px; /* Space between cards */
+}
+
+.card.header {
+    background-color: #007bff; /* Primary color for header */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding for header */
+    border-top-left-radius: 0.5rem; /* Rounded corners for header */
+    border-top-right-radius: 0.5rem; /* Rounded corners for header */
+}
+
+.card.title {
+    font-size: 1.5rem; /* Font size for card title */
+    margin: 0; /* Remove default margin */
+}
+
+/* Form Styles */
+.form-row {
+    margin-bottom: 20px; /* Space between form rows */
+}
+
+.form-label {
+    font-weight: 500; /* Medium weight for labels */
+    color: #495057; /* Darker color for labels */
+}
+
+.form-control {
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 0.25rem; /* Rounded corners */
+    padding: 10px; /* Padding inside input fields */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Shadow on focus */
+}
+
+/* Textarea Styles */
+textarea.form-control {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Button Styles */
+.btn {
+    background-color: #007bff; /* Primary button color */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 10px 20px; /* Padding for button */
+    border-radius: 0.25rem; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Dropify Styles */
+.dropify-wrapper {
+    border: 1px dashed #ced4da; /* Dashed border for file upload */
+    border-radius: 0.25rem; /* Rounded corners */
+    padding: 20px; /* Padding inside the drop area */
+    text-align: center; /* Center text */
+    background-color: #f8f9fa; /* Light background for drop area */
+}
+
+.dropify-message {
+    color: #6c757d; /* Gray color for message */
+}
+
+.dropify-preview {
+    display: none; /* Hide preview by default */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column; /* Stack form fields on smaller screens */
+    }
+
+    .form-group {
+        width: 100%; /* Full width for form groups */
+    }
+}

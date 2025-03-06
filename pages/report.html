@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Report Filter</title>
+  <link rel="stylesheet" href="../assests/css files/report.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../assests/css files/style2.css" />
+  <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+  <style>
+    :root {
+      --primary-color: #0c5227;
+      --primary-dark: #084e1b;
+      --light-bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --input-border: #ccc;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--light-bg);
+      margin: 0;
+      line-height: 1.6;
+    }
+    
+    .card {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 1000px;
+      margin: 30px auto;
+      border-top: 4px solid var(--primary-color);
+    }
+    
+    .card:hover {
+      background-color: var(--card-bg);
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    
+    .page-title {
+      font-size: 32px;
+      margin: 0;
+      font-weight: 500;
+    }
+    
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .form-group {
+      flex: 1 1 calc(33.333% - 20px);
+      margin: 10px;
+      min-width: 220px;
+    }
+    
+    .form-group.full-width {
+      flex: 1 1 100%;
+      margin: 10px 0;
+    }
+    
+    /* Labels now include a hard‑coded red star to denote mandatory fields */
+    .form-label {
+      font-weight: 500;
+      margin-bottom: 8px;
+      display: block;
+      color: var(--primary-color);
+    }
+    .form-label .required {
+      color: red;
+      margin-left: 2px;
+    }
+    
+    .form-control,
+    .form-select,
+    .read-only-input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--input-border);
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      color: black;
+    }
+    
+    .form-control:focus,
+    .form-select:focus,
+    .read-only-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 5px rgba(12, 82, 39, 0.3);
+    }
+    
+    .btn {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    .btn:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* Custom multiselect styles */
+    .custom-multiselect .selectBox {
+      position: relative;
+    }
+    .custom-multiselect .dropdown-arrow {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #666;
+    }
+    .custom-multiselect .read-only-input {
+      background-color: #e9ecef;
+      cursor: pointer;
+      padding-right: 35px;
+    }
+    .custom-multiselect .overSelect {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+    .custom-multiselect .checkboxes {
+      width: 330px;
+      display: none;
+      border: 1px solid #dadada;
+      position: absolute;
+      background: #fff;
+      z-index: 100;
+      max-height: 200px;
+      overflow-y: auto;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .custom-multiselect .checkboxes label {
+      display: block;
+      padding: 8px 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      color: black;
+    }
+    .custom-multiselect .checkboxes label:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    .custom-multiselect .checkboxes input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .button-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      .form-group {
+        flex: 1 1 100%;
+      }
+    }
+    
+    #sidebar {
+      width: 250px;
+      background-color: #0c5227;
+      color: #fff;
+      min-height: 100vh;
+    }
+    #sidebar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+      border-radius: 5px;
+    }
+    #sidebar a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+    .table thead th {
+      background-color: #0c5227;
+      color: #fff;
+    }
+    .pagination {
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        display: none;
+      }
+    }
+    .table-responsive {
+      width: 100%;
+    }
+    table {
+      width: 100% !important;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: middle;
+    }
+    #sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    /* Error styles for validation */
+    .error {
+      border: 2px solid red !important;
+    }
+  </style>
+</head>
+<body>
+  <aside id="sidebar">
+    <div class="p-2 py-3">
+      <h2>PHF</h2>
+      <ul class="list-unstyled">
+        <li><a href="dashboard.html"><i class='bx bx-home-alt'></i> Main</a></li>
+        <li><a href="Admin_All_member.html"><i class='bx bx-user'></i> All Members</a></li>
+        <li><a href="Admin_All_Projects.html"><i class='bx bx-folder'></i> All Projects</a></li>
+        <li><a href="add member.html"><i class='bx bxs-group'></i> Registration</a></li>
+        <li><a href="humanitrain situation.html"><i class='bx bx-shield-alt-2'></i> Humanitarian Situation</a></li>
+        <li><a href="report.html"><i class='bx bxs-report'></i> Report Extract</a></li>
+        <li><a href="#" onclick="logout()"><i class='bx bx-log-out'></i> Logout</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="card">
+    <div class="page-header">
+      <h1 class="page-title">Project Report Filter (Download Report)</h1>
+    </div>
+    <div class="card-body">
+      <!-- Form with all fields marked as mandatory (red star shown in label) -->
+      <form id="reportForm" method="post" action="https://pakhumanitarianforum.org/dashboard/admin/report" enctype="multipart/form-data">
+        <input type="hidden" name="_token" value="V5Dumj3cAzSFrp0mIBI7uNyNTG4tIniu2sF5XHVm" />
+        
+        <!-- Row 1: Type, Sector, SDG -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Project Year <span class="required">*</span></label>
+            <div class="custom-multiselect" id="custom-year">
+              <div class="selectBox" onclick="toggleDropdown('dropdown-year')">
+                <input type="text" id="selected-year" class="read-only-input" placeholder="Select Year(s)" value="All" readonly />
+                <span class="dropdown-arrow">&#x25BC;</span>
+                <div class="overSelect"></div>
+              </div>
+              <div id="dropdown-year" class="checkboxes">
+                <label><input type="checkbox" value="All" onchange="updateSelected('custom-year', 'selected-year')" checked /> All</label>
+                <label><input type="checkbox" value="2024" onchange="updateSelected('custom-year', 'selected-year')" /> 2024</label>
+                <label><input type="checkbox" value="2025" onchange="updateSelected('custom-year', 'selected-year')" /> 2025</label>
+                <label><input type="checkbox" value="2026" onchange="updateSelected('custom-year', 'selected-year')" /> 2026</label>
+                <label><input type="checkbox" value="2027" onchange="updateSelected('custom-year', 'selected-year')" /> 2027</label>
+                <label><input type="checkbox" value="2028" onchange="updateSelected('custom-year', 'selected-year')" /> 2028</label>
+                <label><input type="checkbox" value="2029" onchange="updateSelected('custom-year', 'selected-year')" /> 2029</label>
+                <label><input type="checkbox" value="2030" onchange="updateSelected('custom-year', 'selected-year')" /> 2030</label>
+                <label><input type="checkbox" value="2031" onchange="updateSelected('custom-year', 'selected-year')" /> 2031</label>
+                <label><input type="checkbox" value="2032" onchange="updateSelected('custom-year', 'selected-year')" /> 2032</label>
+                <label><input type="checkbox" value="2033" onchange="updateSelected('custom-year', 'selected-year')" /> 2033</label>
+                <label><input type="checkbox" value="2034" onchange="updateSelected('custom-year', 'selected-year')" /> 2034</label>
+                <label><input type="checkbox" value="2035" onchange="updateSelected('custom-year', 'selected-year')" /> 2035</label>
+                <label><input type="checkbox" value="2036" onchange="updateSelected('custom-year', 'selected-year')" /> 2036</label>
+                <label><input type="checkbox" value="2037" onchange="updateSelected('custom-year', 'selected-year')" /> 2037</label>
+                <label><input type="checkbox" value="2038" onchange="updateSelected('custom-year', 'selected-year')" /> 2038</label>
+                <label><input type="checkbox" value="2039" onchange="updateSelected('custom-year', 'selected-year')" /> 2039</label>
+                <label><input type="checkbox" value="2040" onchange="updateSelected('custom-year', 'selected-year')" /> 2040</label>
+                <label><input type="checkbox" value="2041" onchange="updateSelected('custom-year', 'selected-year')" /> 2041</label>
+                <label><input type="checkbox" value="2042" onchange="updateSelected('custom-year', 'selected-year')" /> 2042</label>
+                <label><input type="checkbox" value="2043" onchange="updateSelected('custom-year', 'selected-year')" /> 2043</label>
+                <label><input type="checkbox" value="2044" onchange="updateSelected('custom-year', 'selected-year')" /> 2044</label>
+                <label><input type="checkbox" value="2045" onchange="updateSelected('custom-year', 'selected-year')" /> 2045</label>
+                <label><input type="checkbox" value="2046" onchange="updateSelected('custom-year', 'selected-year')" /> 2046</label>
+                <label><input type="checkbox" value="2047" onchange="updateSelected('custom-year', 'selected-year')" /> 2047</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="type" class="form-label">Type <span class="required">*</span></label>
+            <select id="type" class="form-control" name="type">
+              <option value="Humanitarian" selected>Humanitarian</option>
+              <option value="Development">Development</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sector <span class="required">*</span></label>
+            <div class="custom-multiselect" id="custom-sector">
+              <div class="selectBox" onclick="toggleDropdown('dropdown-sector')">
+                <input type="text" id="selected-sector" class="read-only-input" placeholder="Select Sector(s)" value="All" readonly />
+                <span class="dropdown-arrow">&#x25BC;</span>
+                <div class="overSelect"></div>
+              </div>
+              <div id="dropdown-sector" class="checkboxes">
+                <label><input type="checkbox" value="All" onchange="updateSelected('custom-sector', 'selected-sector')" checked /> All</label>
+                <label><input type="checkbox" value="Food Security & Livelihood & Cash Assistance" onchange="updateSelected('custom-sector', 'selected-sector')" /> Food Security, Livelihood & Cash Assistance</label>
+                <label><input type="checkbox" value="Economic Assistance in Emergencies" onchange="updateSelected('custom-sector', 'selected-sector')" /> Economic Assistance in Emergencies</label>
+                <label><input type="checkbox" value="Climate Change" onchange="updateSelected('custom-sector', 'selected-sector')" /> Climate Change</label>
+                <label><input type="checkbox" value="Disaster Risk Management" onchange="updateSelected('custom-sector', 'selected-sector')" /> Disaster Risk Management</label>
+                <label><input type="checkbox" value="Education In Emergencies" onchange="updateSelected('custom-sector', 'selected-sector')" /> Education In Emergencies</label>
+                <label><input type="checkbox" value="Health" onchange="updateSelected('custom-sector', 'selected-sector')" /> Health</label>
+                <label><input type="checkbox" value="Nutrition" onchange="updateSelected('custom-sector', 'selected-sector')" /> Nutrition</label>
+                <label><input type="checkbox" value="Protection" onchange="updateSelected('custom-sector', 'selected-sector')" /> Protection</label>
+                <label><input type="checkbox" value="Refugees & IDP's" onchange="updateSelected('custom-sector', 'selected-sector')" /> Refugees & IDP's</label>
+                <label><input type="checkbox" value="Shelter & NFI's" onchange="updateSelected('custom-sector', 'selected-sector')" /> Shelter & NFI's</label>
+                <label><input type="checkbox" value="WASH" onchange="updateSelected('custom-sector', 'selected-sector')" /> WASH</label>
+                <label><input type="checkbox" value="Agriculture & Food Security & Livelihood" onchange="updateSelected('custom-sector', 'selected-sector')" /> Agriculture, Food Security & Livelihood</label>
+                <label><input type="checkbox" value="Economic Development & Poverty Reduction" onchange="updateSelected('custom-sector', 'selected-sector')" /> Economic Development & Poverty Reduction</label>
+                <label><input type="checkbox" value="Education" onchange="updateSelected('custom-sector', 'selected-sector')" /> Education</label>
+                <label><input type="checkbox" value="Governance" onchange="updateSelected('custom-sector', 'selected-sector')" /> Governance</label>
+                <label><input type="checkbox" value="Social Cohesion" onchange="updateSelected('custom-sector', 'selected-sector')" /> Social Cohesion</label>
+                <label><input type="checkbox" value="Technical Education & Vocational Training" onchange="updateSelected('custom-sector', 'selected-sector')" /> Technical Education & Vocational Training</label>
+                <label><input type="checkbox" value="Women Empowerment" onchange="updateSelected('custom-sector', 'selected-sector')" /> Women Empowerment</label>
+              </div>
+            </div>
+          </div>
+   
+        </div>
+        
+        <!-- Row 2: Project Year, Organizations, Province/Region -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">SDG <span class="required">*</span></label>
+            <div class="custom-multiselect" id="custom-sdg">
+              <div class="selectBox" onclick="toggleDropdown('dropdown-sdg')">
+                <input type="text" id="selected-sdg" class="read-only-input" placeholder="Select SDG(s)" value="All" readonly />
+                <span class="dropdown-arrow">&#x25BC;</span>
+                <div class="overSelect"></div>
+              </div>
+              <div id="dropdown-sdg" class="checkboxes">
+                <label><input type="checkbox" value="All" onchange="updateSelected('custom-sdg', 'selected-sdg')" checked /> All</label>
+                <label><input type="checkbox" value="No Poverty" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> No Poverty</label>
+                <label><input type="checkbox" value="Zero Hunger" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Zero Hunger</label>
+                <label><input type="checkbox" value="Good Health and Well-being" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Good Health and Well-being</label>
+                <label><input type="checkbox" value="Quality Education" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Quality Education</label>
+                <label><input type="checkbox" value="Gender Equality" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Gender Equality</label>
+                <label><input type="checkbox" value="Clean Water and Sanitation" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Clean Water and Sanitation</label>
+                <label><input type="checkbox" value="Affordable and Clean Energy" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Affordable and Clean Energy</label>
+                <label><input type="checkbox" value="Decent Work and Economic Growth" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Decent Work and Economic Growth</label>
+                <label><input type="checkbox" value="Industry, Innovation and Infrastructure" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Industry, Innovation and Infrastructure</label>
+                <label><input type="checkbox" value="Reduced Inequality" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Reduced Inequality</label>
+                <label><input type="checkbox" value="Sustainable Cities and Communities" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Sustainable Cities and Communities</label>
+                <label><input type="checkbox" value="Responsible Consumption and Production" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Responsible Consumption and Production</label>
+                <label><input type="checkbox" value="Climate Action" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Climate Action</label>
+                <label><input type="checkbox" value="Life Below Water" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Life Below Water</label>
+                <label><input type="checkbox" value="Life on Land" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Life on Land</label>
+                <label><input type="checkbox" value="Peace and Justice Strong Institutions" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Peace and Justice Strong Institutions</label>
+                <label><input type="checkbox" value="Partnerships for the Goal" onchange="updateSelected('custom-sdg', 'selected-sdg')" /> Partnerships for the Goal</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Organizations <span class="required">*</span></label>
+            <div class="custom-multiselect" id="custom-organizations">
+              <div class="selectBox" onclick="toggleDropdown('dropdown-organizations')">
+                <input type="text" id="selected-organizations" class="read-only-input" placeholder="Select Organizations" value="All" readonly />
+                <span class="dropdown-arrow">&#x25BC;</span>
+                <div class="overSelect"></div>
+              </div>
+              <div id="dropdown-organizations" class="checkboxes">
+                <!-- Default "All" option inserted via script -->
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Province/Region <span class="required">*</span></label>
+            <div class="custom-multiselect" id="custom-province">
+              <div class="selectBox" onclick="toggleDropdown('dropdown-province')">
+                <input type="text" id="selected-province" class="read-only-input" placeholder="Select Province(s)" value="All" readonly />
+                <span class="dropdown-arrow">&#x25BC;</span>
+                <div class="overSelect"></div>
+              </div>
+              <div id="dropdown-province" class="checkboxes">
+                <label><input type="checkbox" value="All" onchange="updateSelected('custom-province', 'selected-province')" checked /> All</label>
+                <label><input type="checkbox" value="Punjab" onchange="updateSelected('custom-province', 'selected-province')" /> Punjab</label>
+                <label><input type="checkbox" value="KPK" onchange="updateSelected('custom-province', 'selected-province')" /> KPK</label>
+                <label><input type="checkbox" value="Sindh" onchange="updateSelected('custom-province', 'selected-province')" /> Sindh</label>
+                <label><input type="checkbox" value="Balochistan" onchange="updateSelected('custom-province', 'selected-province')" /> Balochistan</label>
+                <label><input type="checkbox" value="AJK" onchange="updateSelected('custom-province', 'selected-province')" /> AJK</label>
+                <label><input type="checkbox" value="Gilgit Baltistan" onchange="updateSelected('custom-province', 'selected-province')" /> Gilgit Baltistan</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Row 3: District (Mandatory) -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">District <span class="required">*</span></label>
+            <div class="custom-multiselect" id="custom-district">
+              <div class="selectBox" onclick="toggleDropdown('dropdown-district')">
+                <input type="text" id="selected-district" class="read-only-input" placeholder="Select District(s)" value="All" readonly />
+                <span class="dropdown-arrow">&#x25BC;</span>
+                <div class="overSelect"></div>
+              </div>
+              <div id="dropdown-district" class="checkboxes">
+                <label><input type="checkbox" value="All" onchange="updateSelected('custom-district', 'selected-district')" checked /> All</label>
+                <label><input type="checkbox" value="Muzaffarabad" onchange="updateSelected('custom-district', 'selected-district')" /> Muzaffarabad</label>
+                <label><input type="checkbox" value="Hattian Bala" onchange="updateSelected('custom-district', 'selected-district')" /> Hattian Bala</label>
+                <label><input type="checkbox" value="Neelum" onchange="updateSelected('custom-district', 'selected-district')" /> Neelum</label>
+                <label><input type="checkbox" value="Mirpur" onchange="updateSelected('custom-district', 'selected-district')" /> Mirpur</label>
+                <label><input type="checkbox" value="Bhimber" onchange="updateSelected('custom-district', 'selected-district')" /> Bhimber</label>
+                <label><input type="checkbox" value="Kotli" onchange="updateSelected('custom-district', 'selected-district')" /> Kotli</label>
+                <label><input type="checkbox" value="Poonch" onchange="updateSelected('custom-district', 'selected-district')" /> Poonch</label>
+                <label><input type="checkbox" value="Bagh" onchange="updateSelected('custom-district', 'selected-district')" /> Bagh</label>
+                <label><input type="checkbox" value="Haveli" onchange="updateSelected('custom-district', 'selected-district')" /> Haveli</label>
+                <label><input type="checkbox" value="Sudhnati" onchange="updateSelected('custom-district', 'selected-district')" /> Sudhnati</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Row 4: Submit Button -->
+        <div class="form-row button-row">
+          <div class="form-group" style="text-align: center;">
+            <button type="submit" class="btn">
+              <svg style="vertical-align: middle; margin-right: 8px;" width="20" height="20" fill="#fff" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.5 9.9a.5.5 0 0 1 .5-.5h4.793l-1.147-1.146a.5.5 0 1 1 .708-.708l2 2a.5.5 0 0 1 .146.354v.004a.5.5 0 0 1-.146.354l-2 2a.5.5 0 1 1-.708-.708L5.793 10.5H1a.5.5 0 0 1-.5-.5zM15 8a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0 0 1h8A.5.5 0 0 0 15 8z"/>
+              </svg>
+              Generate Report
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Toggle dropdown checkboxes display
+    function updateSelected(containerId, displayInputId, isOrganization = false) {
+      var container = document.getElementById(containerId);
+      var checkboxes = container.querySelectorAll('input[type="checkbox"]');
+      var displayValues = [];
+      var apiValues = [];
+      
+      checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+          if (isOrganization) {
+            // Get the organization's name from the label's text
+            var labelText = checkbox.parentNode.textContent.trim();
+            displayValues.push(labelText);
+            // The checkbox.value holds the organization's _id
+            apiValues.push(checkbox.value);
+          } else {
+            displayValues.push(checkbox.value);
+          }
+        }
+      });
+      
+      // Update the display input with the organization names (or plain values)
+      document.getElementById(displayInputId).value = displayValues.join(', ');
+      
+      // For organizations, store the API values (_id) in a hidden input field
+      if (isOrganization) {
+        var hiddenField = document.getElementById('selected-organizations-ids');
+        if (hiddenField) {
+          hiddenField.value = apiValues.join(',');
+        }
+      }
+    }
+
+
+    function toggleDropdown(id) {
+      const dropdowns = document.querySelectorAll('.checkboxes');
+      dropdowns.forEach(function(dropdown) {
+        if (dropdown.id !== id) {
+          dropdown.style.display = "none";
+        }
+      });
+      var element = document.getElementById(id);
+      element.style.display = (element.style.display === "block") ? "none" : "block";
+    }
+    
+    // Update the read-only input based on selected checkboxes
+    function updateSelected(containerId, inputId, isOrganization = false) {
+      var container = document.getElementById(containerId);
+      var checkboxes = container.querySelectorAll('.checkboxes input[type="checkbox"]');
+      var selected = [];
+      checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+          if (isOrganization) {
+            selected.push(checkbox.nextSibling.textContent.trim());
+          } else {
+            selected.push(checkbox.value);
+          }
+        }
+      });
+      document.getElementById(inputId).value = selected.join(', ');
+    }
+
+    
+    // Insert default "All" option for organizations and fetch dynamic options
+    document.addEventListener('DOMContentLoaded', function() {
+      const orgDropdown = document.getElementById('dropdown-organizations');
+      const defaultLabel = document.createElement('label');
+      defaultLabel.innerHTML = `<input type="checkbox" value="All" onchange="updateSelected('custom-organizations', 'selected-organizations', true)" checked /> All`;
+      orgDropdown.appendChild(defaultLabel);
+      
+      fetch('http://localhost:5000/api/admin/get-all-organizations')
+        .then(response => response.json())
+        .then(data => {
+          if (Array.isArray(data.users)) {
+            data.users.forEach(user => {
+              const label = document.createElement('label');
+              label.innerHTML = `<input type="checkbox" value="${user._id}" onchange="updateSelected('custom-organizations', 'selected-organizations', true)" /> ${user.username}`;
+              orgDropdown.appendChild(label);
+            });
+          } else {
+            console.error('Expected an array but got:', data);
+          }
+        })
+        .catch(error => console.error('Error fetching organizations:', error));
+    });
+    
+    // Form validation on submit – check that every required field has a non-empty value
+    document.getElementById('reportForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+    //  let isValid = true;
+      
+      // Array of required field objects with id and a descriptive name
+      const requiredFields = [
+        { id: 'type', name: 'Type' },
+        { id: 'selected-sector', name: 'Sector' },
+        { id: 'selected-sdg', name: 'SDG' },
+        { id: 'selected-year', name: 'Project Year' },
+        { id: 'selected-organizations', name: 'Organizations' },
+        { id: 'selected-province', name: 'Province/Region' },
+        { id: 'selected-district', name: 'District' }
+      ];
+      
+      requiredFields.forEach(field => {
+        const element = document.getElementById(field.id);
+        // If the field is empty or its value is "All", mark it as invalid.
+        if (!element.value || element.value.trim() === "" || element.value.trim().toLowerCase() === "all") {
+          isValid = false;
+        } else {
+          element.classList.remove('error');
+        }
+      });
+      
+     // if (!isValid) {
+    //    alert("Please fill in all mandatory fields.");
+    //    return;
+    //  }
+      
+      // Collect the data from the form
+      const data = {
+        type: document.getElementById('type').value,
+        sector_sdg: document.getElementById('selected-sector').value,
+        sdg: document.getElementById('selected-sdg').value,
+        year: document.getElementById('selected-year').value,
+        user: Array.from(document.querySelectorAll('#custom-organizations .checkboxes input:checked')).map(checkbox => checkbox.value),
+        province: document.getElementById('selected-province').value,
+        district: document.getElementById('selected-district').value
+      };
+      console.log(data);
+      
+      fetch('http://localhost:5000/api/admin/filter-projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(filteredData => {
+        const csvData = convertToCSV(filteredData);
+        const blob = new Blob([csvData], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.setAttribute('href', url);
+        a.setAttribute('download', 'report.csv');
+        a.click();
+        URL.revokeObjectURL(url);
+      })
+      .catch(error => console.error('Error:', error));
+    });
+    
+    // Convert JSON data to CSV format
+    function convertToCSV(data) {
+      const csvRows = [];
+      const headers = ['Project Year', 'Project Name', 'Organizations', 'Type', 'sector_sdg', 'SDG', 'Province', 'District', 'Status', 'Year Duration', 'Total Target Beneficiaries', 'Men Above 18', 'Women Above 18', 'Children Below 18', 'Disabled Beneficiaries', 'Transgender Beneficiaries', 'Refugee Beneficiaries', 'Displaced Beneficiaries','Description','Interventions'];
+      csvRows.push(headers.join(','));
+      data.forEach(item => {
+        const row = [
+          item.year || '',
+          item.project_name || '',
+          item.user || '', 
+          item.type || '',
+          item.sector_sdg || '',
+          item.sdg || '',
+          item.province || '',
+          item.district || '', 
+          item.status || '',
+          item.projectDuration || '',
+          item.beneficiaries.total_target_benef || '0',
+          item.beneficiaries.menAbove18 || '0',
+          item.beneficiaries.womenAbove18 || '0',
+          item.beneficiaries.childrenBelow18 || '0',
+          item.beneficiaries.disable_beneficiaries || '0',
+          item.beneficiaries.transgender_beneficiaries || '0',
+          item.beneficiaries.refugee_beneficiaries || '0',
+          item.beneficiaries.displaced_beneficiaries || '0',
+          item.description || '',
+          item.interventions || '',
+        ];
+        csvRows.push(row.join(','));
+      });
+      return csvRows.join('\n');
+    }
+    
+    function logout() {
+      localStorage.clear();
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>

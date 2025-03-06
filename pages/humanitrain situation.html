@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADMIN DASHBOARD | PHF</title>
+  <!-- Boxicons for icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../assests/css files/style2.css" />
+  <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+  <style>
+    body {
+      background-color: #f0f2f5;
+      display: flex;
+      min-height: 100vh;
+    }
+    /* Sidebar styling */
+    #sidebar {
+      width: 250px;
+      background-color: #0c5227;
+      color: #fff;
+      min-height: 100vh;
+    }
+    #sidebar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+      border-radius: 5px;
+    }
+    #sidebar a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+    .table thead th {
+      background-color: #0c5227;
+      color: #fff;
+    }
+    .pagination {
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        display: none;
+      }
+    }
+    /* Ensure table takes full width */
+    .table-responsive {
+      width: 100%;
+    }
+    table {
+      width: 100% !important;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div class="p-2 py-3">
+      <h2>PHF</h2>
+      <ul class="list-unstyled">
+        <li><a href="dashboard.html"><i class='bx bx-home-alt'></i> Main</a></li>
+        <li><a href="Admin_All_member.html"><i class='bx bx-user'></i> All Members</a></li>
+        <li><a href="Admin_All_Projects.html"><i class='bx bx-folder'></i> All Projects</a></li>
+        <li><a href="add member.html"><i class='bx bxs-group'></i> Registration</a></li>
+        <li><a href="humanitrain situation.html"><i class='bx bx-shield-alt-2'></i> Humanitarian Situation</a></li>
+        <li><a href="report.html"><i class='bx bxs-report'></i> Report Extract</a></li>
+        <li><a href="#" onclick="logout()"><i class='bx bx-log-out'></i> Logout</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="table-responsive">
+      <table class="table table-striped text-nowrap border-bottom" id="basic-datatable">
+        <thead>
+          <tr>
+            <th>Sr#</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+                                            <tr class="odd"></tr>
+                                        <td class="align-left">1</td>
+                                        <td class="align-middle">COVID-19</td>
+                                        <td class="align-middle">
+                                            <img src="https://pakhumanitarianforum.org/dashboard/public/assets/images/icons/covid.png" height="50px" alt="icon">
+                                        </td>
+                                        <td class="align-middle">
+                                            <button class="btn btn-link" title="Edit" aria-label="Edit COVID-19">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit" style="width: 18px; height: 18px;">
+                                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                </svg>
+                                            </button>
+                                            <button class="btn btn-link text-danger" title="Delete" aria-label="Delete COVID-19" onclick="confirmDelete('COVID-19')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete" style="width: 18px; height: 18px;">
+                                                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                                                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                                                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                                                </svg>
+                                            </button>
+                                        </td>
+                    
+                                            <tr class="even"></tr>
+                                        <td class="align-left">2</td>
+                                        <td class="align-middle">Earthquake</td>
+                                        <td class="align-middle">
+                                            <img src="https://pakhumanitarianforum.org/dashboard/public/assets/images/icons/earthquake.png" height="50px" alt="icon">
+                                        </td>
+                                        <td class="align-middle">
+                                            <button class="btn btn-link" title="Edit" aria-label="Edit Earthquake">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit" style="width: 18px; height: 18px;">
+                                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                </svg>
+                                            </button>
+                                            <button class="btn btn-link text-danger" title="Delete" aria-label="Delete Earthquake" onclick="confirmDelete('Earthquake')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete" style="width: 18px; height: 18px;">
+                                                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                                                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                                                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                            <tr class="odd"></tr>
+                                        <td class="align-left">3</td>
+                                        <td class="align-middle">HeatWave</td>
+                                        <td class="align-middle">
+                                            <img src="https://pakhumanitarianforum.org/dashboard/public/assets/images/icons/heatwave.png" height="50px" alt="icon">
+                                        </td>
+                                        <td class="align-middle">
+                                            <button class="btn btn-link" title="Edit" aria-label="Edit HeatWave">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit" style="width: 18px; height: 18px;">
+                                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                </svg>
+                                            </button>
+                                            <button class="btn btn-link text-danger" title="Delete" aria-label="Delete HeatWave" onclick="confirmDelete('HeatWave')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete" style="width: 18px; height: 18px;">
+                                                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                                                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                                                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                            
+                                            <tr class="even"></tr>
+                                        <td class="align-left">4</td>
+                                        <td class="align-middle">Polio</td>
+                                        <td class="align-middle">
+                                            <img src="https://pakhumanitarianforum.org/dashboard/public/assets/images/icons/polio.jpg" height="50px" alt="icon">
+                                        </td>
+                                        <td class="align-middle">
+                                            <button class="btn btn-link" title="Edit" aria-label="Edit Polio">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit" style="width: 18px; height: 18px;">
+                                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                </svg>
+                                            </button>
+                                            <button class="btn btn-link text-danger" title="Delete" aria-label="Delete polio" onclick="confirmDelete('Polio')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete" style="width: 18px; height: 18px;">
+                                                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                                                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                                                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    
+                                            <tr class="odd"></tr>
+                                        <td class="align-left">5</td>
+                                        <td class="align-middle">Forest fire</td>
+                                        <td class="align-middle">
+                                            <img src="https://pakhumanitarianforum.org/dashboard/public/assets/images/icons/forestfire.jpg" height="50px" alt="icon">
+                                        </td>
+                                        <td class="align-middle">
+                                            <button class="btn btn-link" title="Edit" aria-label="Edit forest fire">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit" style="width: 18px; height: 18px;">
+                                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                </svg>
+                                            </button>
+                                            <button class="btn btn-link text-danger" title="Delete" aria-label="Delete forestfire" onclick="confirmDelete('forestfire')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete" style="width: 18px; height: 18px;">
+                                                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                                                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                                                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                            <tr class="even"></tr>
+                                        <td class="align-left">6</td>
+                                        <td class="align-middle">Drought</td>
+                                        <td class="align-middle">
+                                            <img src="https://pakhumanitarianforum.org/dashboard/public/assets/images/icons/drought.png" height="50px" alt="icon">
+                                        </td>
+                                        <td class="align-middle">
+                                            <button class="btn btn-link" title="Edit" aria-label="Edit Drought">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit" style="width: 18px; height: 18px;">
+                                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                </svg>
+                                            </button>
+                                            <button class="btn btn-link text-danger" title="Delete" aria-label="Delete Drought" onclick="confirmDelete('Drought')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete" style="width: 18px; height: 18px;">
+                                                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                                                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                                                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                            <tr class="odd"></tr>
+                                        <td class="align-left">7</td>
+                                        <td class="align-middle">Floods</td>
+                                        <td class="align-middle">
+                                            <img src="https://pakhumanitarianforum.org/dashboard/public/assets/images/icons/floods.jpg" height="50px" alt="icon">
+                                        </td>
+                                        <td class="align-middle">
+                                            <button class="btn btn-link" title="Edit" aria-label="Edit floods">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit" style="width: 18px; height: 18px;">
+                                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                </svg>
+                                            </button>
+                                            <button class="btn btn-link text-danger" title="Delete" aria-label="Delete floods" onclick="confirmDelete('Floods')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete" style="width: 18px; height: 18px;">
+                                                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                                                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                                                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    
+                                            <tr class="even"></tr>
+                                        <td class="align-left">8</td>
+                                        <td class="align-middle">Refugees</td>
+                                        <td class="align-middle">
+                                            <img src="https://pakhumanitarianforum.org/dashboard/public/assets/images/icons/refugees.png" height="50px" alt="icon">
+                                        </td>
+                                        <td class="align-middle">
+                                            <button class="btn btn-link" title="Edit" aria-label="Edit Refugees">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit" style="width: 18px; height: 18px;">
+                                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                                </svg>
+                                            </button>
+                                            <button class="btn btn-link text-danger" title="Delete" aria-label="Delete Refugees" onclick="confirmDelete('Refugees')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-delete" style="width: 18px; height: 18px;">
+                                                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                                                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                                                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+          integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIc8K1Lqf3QVnE8wpI2IYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></script>
+  <script>
+    function confirmDelete(itemName) {
+      if (confirm("Are you sure you want to delete " + itemName + "?")) {
+        // Your delete functionality here
+        console.log("Deleting " + itemName);
+      }
+    }
+
+    function logout() {
+        localStorage.clear(); // Clear local storage
+        window.location.href = '/login.html'; // Redirect to login page
+    }
+  </script>
+</body>
+</html>

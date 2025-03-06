@@ -1,0 +1,446 @@
+
+@import  url("https://fonts.googleapis.com/css?family=Poppins:300,400,600,800&display=swap");
+
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.container {
+    /*display: flex;*/
+
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /*position: absolute;*/
+    padding-top: 200px;
+    width: 30%;
+}
+
+.form {
+    background-color: transparent;
+    border: 2px solid rgba(238, 238, 238, 0.7);
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0px 1px 5px 1px rgba(51, 51, 51, 0.1);
+}
+
+.uicon {
+    font-size: 35px;
+    color: green;
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.heading-2 {
+    text-transform: uppercase;
+    color: green;
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+
+}
+
+.input-item {
+    margin-bottom: 20px;
+}
+
+.input {
+    height: 35px;
+    width: 100%;
+    padding: 10px 10px 10px 60px;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0px 2px 5px 2px rgba(51, 51, 51, 0.1);
+}
+.input:focus {
+    outline: none;
+}
+
+.label {
+    position: absolute;
+    height: 35px;
+    color: #fff;
+    display: block;
+    width: 40px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 7px 0 0 7px;
+}
+
+.form-login .label {
+    background-color: green;
+}
+
+.form-register .label {
+    background-color: #00EEB3;
+}
+
+.btn {
+    color: #fff;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 7px;
+    letter-spacing: 2px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: -5px;
+    margin-bottom: 20px;
+    transition: all 0.2s;
+    box-shadow: 0px 2px 10px 2px rgba(51, 51, 51, 0.2);
+}
+.btn:hover {
+    filter: brightness(1.1);
+}
+.btn:focus {
+    outline: none;
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkbox:checked + .checkbox-label:before {
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+}
+
+.checkbox-label {
+    font-size: 14px;
+    font-weight: 700;
+    float: right;
+    color: green;
+    margin-bottom: 30px;
+    text-decoration: underline;
+}
+.checkbox-label:before {
+    /*display: inline-block;*/
+    /*content: "";*/
+    /*height: 20px;*/
+    /*width: 20px;*/
+    /*background: #fff;*/
+    /*margin-right: 10px;*/
+    /*box-shadow: 0px 2px 5px 2px rgba(51, 51, 51, 0.1);*/
+    /*line-height: 20px;*/
+    /*font-size: 14px;*/
+    /*font-weight: 900;*/
+    /*text-align: center;*/
+    /*color: #333;*/
+}
+
+.heading-3 {
+    position: absolute;
+    bottom: -40px;
+    left: 10%;
+    color: #eee;
+    font-weight: 100;
+    font-size: 12px;
+    width: 100%;
+}
+
+.link:link, .link:visited {
+    display: inline-block;
+    margin-left: 10px;
+    text-decoration: none;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    color: #343F34;
+    box-shadow: 0px 2px 5px 2px rgba(51, 51, 51, 0.1);
+}
+
+.form-login .btn {
+    background-color: green;
+}
+
+.form-register .btn {
+    background-color: rgba(0, 238, 179, 0.8);
+}
+
+.form-register {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.form-login, .form-register, .bg-orange, .bg-blue {
+    transition: all 0.5s;
+}
+
+.main-page {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+}
+
+.heading-main {
+    font-size: 68px;
+    font-weight: lighter;
+    margin-bottom: 40px;
+}
+.heading-main .username {
+    font-weight: bold;
+    color: #FDDE90;
+}
+
+.text {
+    font-size: 18px;
+    text-align: center;
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 35px;
+}
+.text .email {
+    font-weight: 400;
+    color: #FDDE90;
+}
+
+.btn-started {
+    display: inline-block;
+    text-decoration: none;
+    border: 2px solid #FDDE90;
+    padding: 10px 15px;
+    color: #FDDE90;
+    font-size: 14px;
+    border-radius: 2px;
+    transition: all 0.1s;
+}
+.btn-started:hover {
+    transform: scale(1.1);
+}
+.btn-started:active {
+    transform: scale(1.05);
+}
+.slideshow {
+    list-style: none;
+    z-index: 1;
+}
+.slideshow li span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: transparent;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: none;
+    opacity: 0;
+    z-index: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-animation: imageAnimation 24s linear infinite 0s;
+    -moz-animation: imageAnimation 24s linear infinite 0s;
+    animation: imageAnimation 24s linear infinite 0s;
+}
+.slideshow li h3 {
+    position: absolute;
+    text-align: center;
+    z-index: 2;
+    bottom: 150px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    font-size: 4.0625em;
+    font-family: "Josefin Sans", sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    -webkit-animation: titleAnimation 24s linear 1 0s;
+    -moz-animation: titleAnimation 24s linear 1 0s;
+    animation: titleAnimation 24s linear 1 0s;
+}
+@media  only screen and (min-width: 768px) {
+    .slideshow li h3 {
+        bottom: 30px;
+        font-size: 8.125em;
+    }
+}
+@media  only screen and (min-width: 1024px) {
+    .slideshow li h3 {
+        font-size: 10.9375em;
+    }
+}
+
+.slideshow li:nth-child(1) span {
+    background-image: url(https://pakhumanitarianforum.org/dashboard/public/front/images/bn6.jpg);
+}
+
+.slideshow li:nth-child(2) span {
+    background-image: url(https://pakhumanitarianforum.org/dashboard/public/front/images/p2.png);
+    -webkit-animation-delay: 6s;
+    -moz-animation-delay: 6s;
+    animation-delay: 6s;
+}
+
+.slideshow li:nth-child(3) span {
+    background-image: url(https://pakhumanitarianforum.org/dashboard/public/front/images/p3.jpg);
+    -webkit-animation-delay: 12s;
+    -moz-animation-delay: 12s;
+    animation-delay: 12s;
+}
+
+.slideshow li:nth-child(4) span {
+    background-image: url(https://pakhumanitarianforum.org/dashboard/public/front/images/bn4.jpg);
+    -webkit-animation-delay: 18s;
+    -moz-animation-delay: 18s;
+    animation-delay: 18s;
+}
+
+@-webkit-keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        -webkit-animation-timing-function: ease-in;
+    }
+    12.5% {
+        opacity: 1;
+        -webkit-animation-timing-function: ease-out;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-moz-keyframes imageAnimation {
+    0% {
+        opacity: 0;
+        -moz-animation-timing-function: ease-in;
+    }
+    12.5% {
+        opacity: 1;
+        -moz-animation-timing-function: ease-out;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes  imageAnimation {
+    0% {
+        opacity: 0;
+        -webkit-animation-timing-function: ease-in;
+        -moz-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+    12.5% {
+        opacity: 1;
+        -webkit-animation-timing-function: ease-out;
+        -moz-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-webkit-keyframes titleAnimation {
+    0% {
+        opacity: 0;
+    }
+    12.5% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-moz-keyframes titleAnimation {
+    0% {
+        opacity: 0;
+    }
+    12.5% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes  titleAnimation {
+    0% {
+        opacity: 0;
+    }
+    12.5% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    37.5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.no-cssanimations .slideshow li span {
+    opacity: 1;
+}
+
+
+
+#particles-js
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*background: white;*/
+}

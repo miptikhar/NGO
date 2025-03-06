@@ -1,0 +1,322 @@
+/* Basic table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+/* Styling the table header */
+table th {
+    background-color: #f8f9fa;
+    color: #495057;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Styling the table data cells */
+table td {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Alternate row background for better readability */
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect on rows */
+table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Styling the image inside the table */
+table td img {
+    border-radius: 50%;
+    max-width: 50px;
+    height: auto;
+}
+
+/* Button styling inside table cells */
+table td .btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Style for the Edit button */
+table td .edit-btn {
+    color: blue; /* Blue color for Edit */
+}
+
+/* Style for the Delete button */
+table td .delete-btn {
+    color: red; /* Red color for Delete */
+}  
+
+
+/* Adding a responsive design */
+@media (max-width: 768px) { 
+    table th, table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+/* humanitrain situation */
+
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #495057;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main content area */
+.main-content {
+    padding: 30px 15px;
+}
+
+/* Page header */
+.page-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Form container styling */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+}
+
+/* Label styling */
+.form-label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #495057;
+}
+
+/* Ensure form elements stack vertically */
+.form-row {
+    display: flex;
+    flex-direction: column;  /* Stack form elements vertically */
+}
+
+/* Form input fields */
+input[type="text"], textarea, .form-control {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    color: #495057;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+/* Input focus effect */
+input[type="text"]:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* File upload styling */
+.file-upload {
+    background-color: #e9ecef;
+    border: 2px dashed #6c757d;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.file-upload i {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.file-upload:hover {
+    background-color: #f8f9fa;
+}
+
+/* Textarea for large text */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Submit button styling */
+.submit-button {
+    text-align: center; /* Center the button */
+    margin-top: 20px; /* Add some space above the button */
+}
+
+.add-situation-button {
+    padding: 10px 20px; /* Padding for the button */
+    font-size: 16px; /* Font size */
+    font-weight: 500; /* Font weight */
+    color: #fff; /* Text color */
+    background-color: green; /* Button background color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.add-situation-button:hover {
+    background-color: darkgreen; /* Darker green on hover */
+}
+
+.add-situation-button:focus {
+    outline: none; /* Remove outline on focus */
+}
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .file-upload {
+        font-size: 14px;
+        padding: 20px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+    }
+}
+
+/* human */
+/* Reset some default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Main content container */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Page header */
+.page-header {
+    margin-bottom: 40px;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color:black;
+}
+
+/* Container for the form */
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Styles for the response items */
+.responses {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.response-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.response-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Label styling */
+label {
+    font-size: 1.2rem;
+    color: #555;
+    cursor: pointer;
+}
+
+label:hover {
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+/* Focus effect for checkboxes */
+input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.add-situation {
+padding: 10px;
+color: white;
+text-decoration: none;
+border-radius: 5px;
+display: flex; /* Use flexbox for alignment */
+justify-content: flex-end; /* Align items to the right */
+margin-top: 20px; /* Optional: Add some space above */
+}
+/* Responsive styling */
+@media (max-width: 768px){
+        .main-content {
+        padding: 10px;
+}
+    .container {
+        padding: 20px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .response-item {
+        font-size: 1rem
+    }
+}

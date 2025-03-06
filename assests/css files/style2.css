@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    font-family: 'Outfit', serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.content {
+    flex: 1;
+
+}
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-width: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.25s ease-in-out;
+    background-color: #fff;
+}
+
+#sidebar {
+
+    width: 100px;
+    transition: all 0.25s ease-in-out;
+    background-color: #0b0f19;
+    display: flex; /* Added display flex for proper alignment */
+    flex-direction: column;
+    height:100vh
+    
+}
+
+#sidebar.expand {
+    width: 260px;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.toggle-btn {
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    border-radius: 0.425rem;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+}
+
+.toggle-btn i {
+    color: #fff;
+}
+
+#sidebar.expand .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    animation: fadein 0.25s ease;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.sidebar-logo a {
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.sidebar-nav {
+    padding: 0.7rem 0; /* Removed space between number and unit */
+    flex: 1; /* Adjusted flex property */
+    z-index: 10;
+}
+
+a.sidebar-link {
+    padding: 0.625rem 1.625rem; /* Removed space between number and unit */
+    color: #fff;
+    display: block;
+    white-space: nowrap;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i,
+.dropdown-item i {
+    font-size: 1.1rem; /* Removed space between number and unit */
+    margin-right: 0.75rem; /* Removed space between number and unit */
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid green;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item.sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 90px;
+    background-color: #0e2238;
+    padding: 0;
+    min-width: 15rem; /* Removed space between number and unit */
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown + .sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar:not(.expand) .sidebar-item.sidebar-dropdown .sidebar-dropdown {
+    left: 130px;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+.sidebar-dropdown .sidebar-link{
+    position:relative;
+    padding-left: 3rem;
+    transition: all 0.5s
+
+
+}
+.sidebar-dropdown a.sidebar-link::before {
+    content: "";
+    position: absolute;
+    left: 1.8rem;
+    top: 50%;
+    width: 0.375rem;
+    height: 0.125rem;
+    background-color: #ffffff80;
+    transform: translateY(-50%); /* Corrected syntax */
+    transition: all 0.5s;
+}
+
+
+.sidebar-dropdown a.sidebar -link:hover::before {
+    background: transparent;
+    border-left: 3px solid transparent;
+    padding-left: 3.8rem;
+    color:green;
+    
+}
+
+.navbar{
+    background-color: #fff;
+    box-shadow: 0 0 2rem 0 rgba(33,37,41,.1);
+
+}
+
+.navbar-expand .navbar-collapse{
+    min-width:200px;
+}
+
+.avatar{
+    height:40px;
+    width:40px;
+}
+
+.dashboard-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    transition: .4s;
+    cursor: pointer;
+    border-color: rgba(231,234,243,0.7)
+}
+.card h3 {
+    text-transform: uppercase;
+    font-size: .7161rem;
+    margin-bottom:.25rem;
+    
+}
+.card p {
+    margin: 10px 0 0;
+    font-size: 16px;
+}
+.card .Members {
+    color: green;
+}
+.card .amount {
+    font-size: 16px; /* Adjust size as needed */
+    font-weight: bold; /* Make the amount bold */
+}
+.card .small-font {
+    font-size: 12px; /* Smaller font size */
+    font-weight: normal; /* Regular weight for small font */
+}
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card-large {
+    flex: 1;
+}
+.card-small {
+    flex: 0 0 200px;
+}
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+    }
+    .card-large, .card-small {
+        flex: 1;
+    }
+}
+
+.card {
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+}
+
+.card:hover {
+    background-color: green;
+    color: #fff;
+    transform: translateY(-10.5px);
+}
+
+.table > thead tr {
+    color: #fff;
+    text-align: left;
+    background-color: #007bff; /* Set a background color for the header for better visibility */
+}
+
+tr.highlight th {
+    background-color: green;
+    color: #fff;
+}
+
+.content {
+    flex: 1 1 auto; /* Ensure the parent container is set up for flexbox */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+.add-members {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+.add-members:hover {
+    text-decoration: underline;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.action-icons {
+    display: flex;
+    gap: 10px;
+}
+.action-icons i {
+    cursor: pointer;
+    color: #007bff;
+}
+.action-icons i:hover {
+    color: #0056b3;
+}
+.action-icons .fa-trash-alt {
+    color: #dc3545;
+}
+.action-icons .fa-trash-alt:hover {
+    color: #c82333;
+}
+        
+    

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADMIN DASHBOARD | PHF</title>
+  <!-- Boxicons for icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../assests/css files/style2.css" />
+  <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+  <style>
+    /* Loader overlay styling */
+    /* Removed loader styles */
+    body {
+      background-color: #f0f2f5; /* Lighter background for modern look */
+      display: flex;
+      min-height: 100vh;
+    }
+    /* Sidebar styling */
+    #sidebar {
+      width: 250px;
+      background-color: #0c5227;
+      color: #fff;
+      min-height: 100vh;
+    }
+    #sidebar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+      border-radius: 5px;
+    }
+    #sidebar a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+    .table thead th {
+      background-color: #0c5227;
+      color: #fff;
+    }
+    .pagination {
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        display: none;
+      }
+    }
+    .container {
+      max-width: 600px;
+      height: 500px;
+      margin: auto; /* Center horizontally */
+      padding: 20px;
+      background: white; /* White background for the form */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      position: absolute; /* Positioning for vertical centering */
+      top: 50%; /* Move down 50% of the viewport height */
+      left: 50%; /* Move right 50% of the viewport width */
+      transform: translate(-50%, -50%); /* Center the form */
+    }
+    .form-group {
+      margin-bottom: 1.5rem; /* Increased spacing between form groups */
+    }
+    .btn {
+      border-radius: 25px; /* Rounded button */
+      padding: 10px 20px; /* More padding for the button */
+      transition: background-color 0.3s; /* Smooth transition */
+    }
+    .btn:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div class="p-2 py-3">
+      <h2>PHF</h2>
+      <ul class="list-unstyled">
+        <li><a href="dashboard.html"><i class='bx bx-home-alt'></i> Main</a></li>
+        <li><a href="Admin_All_member.html"><i class='bx bx-user'></i> All Members</a></li>
+        <li><a href="Admin_All_Projects.html"><i class='bx bx-folder'></i> All Projects</a></li>
+        <li><a href="add member.html"><i class='bx bxs-group'></i> Registration</a></li>
+        <li><a href="humanitrain situation.html"><i class='bx bx-shield-alt-2'></i> Humanitarian Situation</a></li>
+        <li><a href="report.html"><i class='bx bxs-report'></i> Report Extract</a></li>
+        <li><a href="Admin_All_member.html"><i class='bx bx-log-out'></i> Logout</a></li>
+      </ul>
+    </div>
+  </aside>
+    <div class="container">
+        <h1>Member Registration</h1>
+        <form>
+            <div class="form-group">
+                <label for="member-name">Member Name</label>
+                <input type="text" id="member-name" class="form-control" placeholder="Please Enter Member Name">
+            </div>
+            <div class="form-group">
+                <label for="member-email">Member Email</label>
+                <input type="email" id="member-email" class="form-control" placeholder="Please Enter Member Email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Please Enter Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADMIN DASHBOARD | PHF</title>
+  <!-- Boxicons for icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../assests/css files/style2.css" />
+  <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+  <style>
+    /* Loader overlay styling */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      min-height: 100vh;
+    }
+    /* Sidebar styling */
+    #sidebar {
+      width: 250px;
+      background-color: #0c5227;
+      color: #fff;
+      min-height: 100vh;
+    }
+    #sidebar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+      border-radius: 5px;
+    }
+    #sidebar a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+    .table thead th {
+      background-color: #0c5227;
+      color: #fff;
+    }
+    .pagination {
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      #sidebar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div class="p-2 py-3">
+      <h2>PHF</h2>
+      <ul class="list-unstyled">
+        <li><a href="dashboard.html"><i class='bx bx-home-alt'></i> Main</a></li>
+        <li><a href="Admin_All_member.html"><i class='bx bx-user'></i> All Members</a></li>
+        <li><a href="Admin_All_Projects.html"><i class='bx bx-folder'></i> All Projects</a></li>
+        <li><a href="add member.html"><i class='bx bxs-group'></i> Registration</a></li>
+        <li><a href="humanitrain situation.html"><i class='bx bx-shield-alt-2'></i> Humanitarian Situation</a></li>
+        <li><a href="report.html"><i class='bx bxs-report'></i> Report Extract</a></li>
+        <li><a href="Admin_All_member.html"><i class='bx bx-log-out'></i> Logout</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Logout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutModalLabel">Logout Confirmation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">Are you sure you want to logout?</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" id="confirmLogout" class="btn btn-primary">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Heading & Search Bar -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3>Projects (<small id="totalRecords">0</small>)</h3>
+      <div class="input-group" style="max-width:300px;">
+        <span class="input-group-text" id="search-icon"><i class="bi bi-search"></i></span>
+        <input type="text" id="searchInput" class="form-control" placeholder="Search projects..." aria-label="Search">
+      </div>
+      <!-- Filter Dropdown -->
+      <select id="typeFilter" class="form-select" style="max-width:150px;">
+        <option value="">All Types</option>
+        <option value="Development">Development</option>
+        <option value="Humanitarian">Humanitarian</option>
+        <!-- Add more options as needed -->
+      </select>
+    </div>
+
+    <!-- Projects Table -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Type</th>
+            <th>Project Name</th>
+            <th>NGO</th>
+          </tr>
+        </thead>
+        <tbody id="projectTableBody">
+          <!-- Rows will be inserted dynamically -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <nav>
+      <ul class="pagination" id="paginationControls"></ul>
+    </nav>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+          integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIc8K1Lqf3QVnE8wpI2IYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"></script>
+  
+  <script>
+    // Check for token and role on page load
+    window.onload = function() {
+      const token = localStorage.getItem('token');
+      const role = localStorage.getItem('role');
+      if (!token || role !== 'admin') {
+        window.location.href = 'login.html';
+      }
+    };
+
+    // Hide loader when page is fully loaded
+    window.addEventListener('load', function() {
+      const loader = document.getElementById('loader');
+      if (loader) {
+        loader.style.display = 'none';
+      }
+    });
+
+    // Fetch all projects from API
+    let projects = [];
+    let filteredProjects = [];
+    let currentPage = 1;
+    const pageSize = 30;
+
+    async function fetchProjects() {
+      try {
+        const response = await fetch('http://localhost:5000/api/admin/get-all-projects');
+        if (!response.ok) throw new Error('Network error');
+        projects = await response.json();
+        filteredProjects = projects;
+        document.getElementById('totalRecords').innerText = projects.length;
+        renderTable();
+        renderPagination();
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      }
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('projectTableBody');
+      tbody.innerHTML = '';
+      const start = (currentPage - 1) * pageSize;
+      const end = start + pageSize;
+      const pageItems = filteredProjects.slice(start, end);
+      pageItems.forEach((project, index) => {
+        const tr = document.createElement('tr');
+        const globalIndex = start + index + 1;
+        tr.innerHTML = `
+          <td>${globalIndex}</td>
+          <td>${project.type}</td>
+          <td>${project.project_name}</td>
+          <td>${project.user.username}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderPagination() {
+      const paginationEl = document.getElementById('paginationControls');
+      paginationEl.innerHTML = '';
+      const totalPages = Math.ceil(filteredProjects.length / pageSize);
+      
+      // Previous button
+      const prevLi = document.createElement('li');
+      prevLi.className = 'page-item ' + (currentPage === 1 ? 'disabled' : '');
+      prevLi.innerHTML = `<a class="page-link" href="#">Previous</a>`;
+      prevLi.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currentPage > 1) {
+          currentPage--;
+          renderTable();
+          renderPagination();
+        }
+      });
+      paginationEl.appendChild(prevLi);
+
+      // Page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        const li = document.createElement('li');
+        li.className = 'page-item ' + (i === currentPage ? 'active' : '');
+        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        li.addEventListener('click', (e) => {
+          e.preventDefault();
+          currentPage = i;
+          renderTable();
+          renderPagination();
+        });
+        paginationEl.appendChild(li);
+      }
+
+      // Next button
+      const nextLi = document.createElement('li');
+      nextLi.className = 'page-item ' + (currentPage === totalPages ? 'disabled' : '');
+      nextLi.innerHTML = `<a class="page-link" href="#">Next</a>`;
+      nextLi.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderTable();
+          renderPagination();
+        }
+      });
+      paginationEl.appendChild(nextLi);
+    }
+
+    function handleSearch() {
+      const searchValue = document.getElementById('searchInput').value.toLowerCase();
+      const selectedType = document.getElementById('typeFilter').value;
+
+      filteredProjects = projects.filter(project => {
+        const matchesSearch = project.type.toLowerCase().includes(searchValue) || 
+                     project.user.username.toLowerCase().includes(searchValue) || 
+                     project.project_name.toLowerCase().includes(searchValue);
+        const matchesType = selectedType === "" || project.type === selectedType;
+        return matchesSearch && matchesType;
+      });
+
+      currentPage = 1;
+      document.getElementById('totalRecords').innerText = filteredProjects.length;
+      renderTable();
+      renderPagination();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', handleSearch);
+    document.getElementById('typeFilter').addEventListener('change', handleSearch);
+    window.addEventListener('load', fetchProjects);
+
+    document.getElementById("confirmLogout")?.addEventListener("click", function() {
+      localStorage.clear();
+      window.location.href = "/login.html";
+    });
+  </script>
+</body>
+</html>
